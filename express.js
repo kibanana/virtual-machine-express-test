@@ -72,18 +72,26 @@ app.delete('/users/:idx', (req, res) => {
 
 app.get('/hi', (req, res) => {
     console.log('Hi!')
+
+    res.send('success')
 })
 
 app.get('/hello', (req, res) => {
     console.log('Hello!')
+
+    res.send('success')
 })
 
 app.get('warn', (req, res) => {
     console.warn('Test warning!')
+
+    res.send('success')
 })
 
 app.get('error', (req, res) => {
     console.error('Test error!')
+
+    res.send('success')
 })
  
 app.listen(process.env.PORT || 8080, () => {
