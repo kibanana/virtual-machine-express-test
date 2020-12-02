@@ -53,8 +53,8 @@ app.patch('/users/:idx', (req, res) => {
     let { idx } = req.params
     const { name } = req.params
 
-    if (isNaN(idx) || !name) res.status(400).send('ERR_INVALID_PARAM')
-    if (users.length <= idx) res.status(404).send('NOT_FOUND')
+    if (isNaN(idx) || !name) return res.status(400).send('ERR_INVALID_PARAM')
+    if (users.length <= idx) return res.status(404).send('NOT_FOUND')
 
     users[idx].name = name
 
@@ -64,8 +64,8 @@ app.patch('/users/:idx', (req, res) => {
 app.delete('/users/:idx', (req, res) => {
     let { idx } = req.params
 
-    if (isNaN(idx)) res.status(400).send('ERR_INVALID_PARAM')
-    if (users.length <= idx) res.status(404).send('NOT_FOUND')
+    if (isNaN(idx)) return res.status(400).send('ERR_INVALID_PARAM')
+    if (users.length <= idx) return res.status(404).send('NOT_FOUND')
 
     users[idx].active = false
 
