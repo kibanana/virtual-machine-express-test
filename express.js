@@ -49,6 +49,31 @@ app.post('/users', (req, res) => {
     res.send('success')
 })
 
+app.post('/users/:idx/profile', (req, res) => {
+    multer(async req => {
+        return `/profil-upload/${req.params.idx}`
+    })(req, res, err => {
+        const { folderPath, originalname } = req.body
+
+        try {
+            if (err) throw new Error(err)
+
+            let { idx } = req.params
+            const { name } = req.body
+
+            if (isNaN(idx) || !name) return res.status(400).send('ERR_INVALID_PARAM')
+            if (users.length <= idx) return res.status(404).send('NOT_FOUND')
+
+            users[idx].profile = originalname
+
+            res.send('success')
+        }
+        catch (err) {
+            console.log(err)
+        }
+    })
+})
+
 app.patch('/users/:idx', (req, res) => {
     let { idx } = req.params
     const { name } = req.body
