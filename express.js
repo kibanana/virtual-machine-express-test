@@ -51,7 +51,7 @@ app.post('/users', (req, res) => {
 
 app.patch('/users/:idx', (req, res) => {
     let { idx } = req.params
-    const { name } = req.params
+    const { name } = req.body
 
     if (isNaN(idx) || !name) return res.status(400).send('ERR_INVALID_PARAM')
     if (users.length <= idx) return res.status(404).send('NOT_FOUND')
