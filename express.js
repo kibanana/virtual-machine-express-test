@@ -51,7 +51,7 @@ app.post('/users', (req, res) => {
 
 app.post('/users/:idx/profile', (req, res) => {
     multer(async req => {
-        return `/profil-upload/${req.params.idx}`
+        return `/profile-upload/${req.params.idx}`
     })(req, res, err => {
         const { folderPath, originalname } = req.body
 
