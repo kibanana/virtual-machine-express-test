@@ -67,6 +67,8 @@ app.delete('/users/:idx', (req, res) => {
     if (isNaN(idx)) res.status(400).send('ERR_INVALID_PARAM')
     if (users.length <= idx) res.status(404).send('NOT_FOUND')
 
+    users[idx].active = false
+
     res.send('success')
 })
 
