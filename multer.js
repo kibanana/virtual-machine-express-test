@@ -1,4 +1,5 @@
 const Mkdirp = require('./mkdirp')
+const path = require('path')
 const multer = require('multer')
 
 const diskStorage = GetPath => multer.diskStorage({
@@ -16,8 +17,9 @@ const diskStorage = GetPath => multer.diskStorage({
         }
     },
     filename: function (req, file, cb) {
-        req.body.originalname = file.originalname
-        cb(null, file.originalname)
+        const name = `profile${path.extname(file.originalname)}`
+        req.body.originalname = name
+        cb(null, name)
     }
 })
 const upload = GetPath => multer({ storage: diskStorage(GetPath) }).array('source')

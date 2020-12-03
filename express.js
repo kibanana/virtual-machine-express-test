@@ -60,9 +60,8 @@ app.post('/users/:idx/profile', (req, res) => {
             if (err) throw new Error(err)
 
             let { idx } = req.params
-            const { name } = req.body
 
-            if (isNaN(idx) || !name) return res.status(400).send('ERR_INVALID_PARAM')
+            if (isNaN(idx)) return res.status(400).send('ERR_INVALID_PARAM')
             if (users.length <= idx) return res.status(404).send('NOT_FOUND')
 
             users[idx].profile = originalname
