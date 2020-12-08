@@ -109,13 +109,13 @@ app.get('/hello', (req, res) => {
     res.send('success')
 })
 
-app.get('warn', (req, res) => {
+app.get('/warn', (req, res) => {
     console.warn('Test warning!')
 
     res.send('success')
 })
 
-app.get('error', (req, res) => {
+app.get('/error', (req, res) => {
     console.error('Test error!')
 
     res.send('success')
